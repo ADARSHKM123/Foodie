@@ -1,12 +1,21 @@
-
+// import { useContext } from 'react';
 import Model from '../UI/Model';
 import classes from './Cart.module.css';
+// import CartContext from '../../store/Context';
 
 
 
 
 const Cart = (props) => {
-  const cartItems = <ul className={classes['cart-items']}>{[{id:'c1',name:'suchi',amount:2,price:12.99}].map((item,i)=> <li key={i}> {item.name}</li>)}</ul>
+  
+  // const cartctx = useContext(CartContext);
+
+  // const numberOfCartItems= cartctx.items.reduce((acc,item)=>  {
+  //   return acc + item.amount
+  // },0);
+
+  const cartItems = <ul className={classes['cart-items']}>{[{id:'c1',name:'suchi',amount:2,price:12.99}]
+  .map((item,i)=> <li key={i}> {item.name}</li>)}</ul>
   return ( 
     <Model onClosing={props.onClose}>
       {cartItems}
