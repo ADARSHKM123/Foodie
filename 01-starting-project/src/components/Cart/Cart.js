@@ -18,11 +18,11 @@ const Cart = (props) => {
   // },0);
 
   const cartItemRemoveHandler=id=>{
-  
+  cartctx.removeItem(id);
   };
   
   const cartItemAddHandler=item=>{
-  
+    cartctx.addItem({...item,amount:1})
   };
 
 
@@ -30,6 +30,7 @@ const Cart = (props) => {
     {cartctx.items.map((item,i)=> 
     <CartItem
      key={item.id} 
+     id={item.id}
      name={item.name} 
      amount={item.amount} 
      price={item.price}
