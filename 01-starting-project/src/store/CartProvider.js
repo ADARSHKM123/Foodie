@@ -4,7 +4,7 @@ import { useReducer } from 'react'
 const defaultCartState = {
     items: [],
     totalAmount: 0,
-}
+}   
 
 const cartReducer = (state, action) => {
     if (action.type === 'ADD') {
@@ -56,6 +56,11 @@ const cartReducer = (state, action) => {
           totalAmount: updatedTotalAmount
         };
       }
+
+      if(action.type === 'CLEAR'){
+          return defaultCartState;
+      }
+
     return defaultCartState
 }
 
@@ -72,12 +77,18 @@ const CartProvider = (props) => {
     const removeItemFromCartHandler = (id) => {
         dispatchCartAction({ type: 'REMOVE', id: id })
     }
+    const clearCartHandler =()=>{
+        dispatchCartAction({type: 'CLEAR'});
+    }
+
+
 
     const cartContext = {
         items: cartstate.items,
         totalAmount: cartstate.totalAmount,
         addItem: addItemToCartHandler,
         removeItem: removeItemFromCartHandler,
+        clearCart:clearCartHandler
     }
 
     return (
